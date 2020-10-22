@@ -1,0 +1,45 @@
+SELECT 
+SUM(CASE WHEN codep='01' then 1 else 0 end) Chuquisaca, 
+SUM(case when codep='02' then 1 else 0 end) LaPaz,
+SUM(CASE WHEN codep='03' then 1 else 0 end) Cochabamba, 
+SUM(CASE WHEN codep='04' then 1 else 0 end) Oruro, 
+SUM(CASE WHEN codep='05' then 1 else 0 end) Potosi, 
+SUM(CASE WHEN codep='06' then 1 else 0 end) Tarija, 
+SUM(CASE WHEN codep='07' then 1 else 0 end) SantaCruz, 
+SUM(CASE WHEN codep='08' then 1 else 0 end) Beni, 
+SUM(CASE WHEN codep='09' then 1 else 0 end) Pando
+FROM identificador
+
+
+SELECT 
+CASE when codep='01' then 'Chuquisaca' end,
+case codep when '02' then 'LA Paz' end
+FROM identificador
+
+
+
+
+SELECT *
+from identificador i, (select ci, materia, COUNT(*) as total
+from notas
+WHERE nota > 50
+group by materia) tmp
+WHERE i.ci=tmp.ci
+
+
+
+
+SELECT 
+SUM(CASE WHEN i.codep='01' then 1 else 0 end) Chuquisaca, 
+SUM(case when i.codep='02' then 1 else 0 end) LaPaz,
+SUM(CASE WHEN i.codep='03' then 1 else 0 end) Cochabamba, 
+SUM(CASE WHEN i.codep='04' then 1 else 0 end) Oruro, 
+SUM(CASE WHEN i.codep='05' then 1 else 0 end) Potosi, 
+SUM(CASE WHEN i.codep='06' then 1 else 0 end) Tarija, 
+SUM(CASE WHEN i.codep='07' then 1 else 0 end) SantaCruz, 
+SUM(CASE WHEN i.codep='08' then 1 else 0 end) Beni, 
+SUM(CASE WHEN i.codep='09' then 1 else 0 end) Pando
+FROM identificador i, (select ci
+					from notas
+					WHERE nota > 50) tmp
+where tmp.ci=i.ci

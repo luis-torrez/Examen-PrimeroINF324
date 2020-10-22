@@ -1,0 +1,15 @@
+
+SELECT 
+SUM(CASE WHEN i.codep='01' then 1 else 0 end) Chuquisaca, 
+SUM(case when i.codep='02' then 1 else 0 end) LaPaz,
+SUM(CASE WHEN i.codep='03' then 1 else 0 end) Cochabamba, 
+SUM(CASE WHEN i.codep='04' then 1 else 0 end) Oruro, 
+SUM(CASE WHEN i.codep='05' then 1 else 0 end) Potosi, 
+SUM(CASE WHEN i.codep='06' then 1 else 0 end) Tarija, 
+SUM(CASE WHEN i.codep='07' then 1 else 0 end) SantaCruz, 
+SUM(CASE WHEN i.codep='08' then 1 else 0 end) Beni, 
+SUM(CASE WHEN i.codep='09' then 1 else 0 end) Pando
+FROM identificador i, (select ci
+					from notas
+					WHERE nota > 50) tmp
+where tmp.ci=i.ci
